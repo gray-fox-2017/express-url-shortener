@@ -1,0 +1,32 @@
+<!--DOCTYPE html-->
+<html>
+  <head></head>
+  <body>
+    <form action="" method="post">
+      <input type="text" required name="lurl" placeholder="Input URL to shorten"/>
+      <input type="submit">
+    </form>
+
+    <div>
+      <h2>List url yang dipendekan</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Short URL</th>
+            <th>Long URL</th>
+            <th>Counter</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <% urls.forEach(url => {%>
+            <td><%= url.lurl %></td>
+            <td><%= url.surl %></td>
+            <td><%= url.counter %></td>
+            <% });%>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
