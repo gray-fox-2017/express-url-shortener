@@ -19,9 +19,9 @@ router.post('/', function(req, res, next) {
   });
 });
 
-router.get('/:id',function(req,res,next){
-  let id = req.params.id;
-  db.Url.findOne({where: {surl:id}})
+router.get('/:surl',function(req,res,next){
+  let surl = req.params.surl;
+  db.Url.findOne({where: {surl:surl}})
   .then((url)=>{
     url.update({counter: url.counter+1})
     .then(()=>{

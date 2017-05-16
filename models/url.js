@@ -12,16 +12,22 @@ module.exports = function(sequelize, DataTypes) {
     hooks: {
       beforeCreate: () => {
         let flag = false;
-        let n_surl = '';
-        while (flag === false) {
-          n_surl = helper.generateShortUrl();
-          Url.findAll({where:{surl:n_surl}})
-          .then(()=>{})
-          .catch((err)=>{
-            Url.surl = n_surl;
-            flag = true;
-          });
-        }//end while flag
+        Url.count().then((c)=> {
+        })
+        .err(()=>{
+          flag = true;
+          let n_surl = '';
+          while (flag === false) {
+            n_surl = helper.generateShortUrl();
+            Url.findAll({where:{surl:n_surl}})
+            .then(()=>{})
+            .catch((err)=>{
+              Url.surl = n_surl;
+              flag = true;
+            });
+          }//end while flag
+        })//end err
+
       }//end beforeCreate
     }//end hook
   },{
