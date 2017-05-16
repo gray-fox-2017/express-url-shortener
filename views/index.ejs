@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ssssss </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Short Url APPS</h1>
+    <p>Welcome</p>
+    <form class="" action="/url/create" method="post">
+      <input type="text" name="norm_url" placeholder="Your url here... " value="">
+      <button type="submit" name="button">Get short !</button>
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>short url</th>
+          <th>click count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%
+          data.forEach((d) => {
+        %>
+        <tr>
+          <td><%= d.id %></td>
+          <td><%= d.short_url %></td>
+          <td><%= d.click_count %></td>
+        </tr>
+        <%
+         })
+        %>
+      </tbody>
+    </table>
+  </body>
+</html>
