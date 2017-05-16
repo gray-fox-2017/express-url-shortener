@@ -1,0 +1,28 @@
+<%- include ./partials/header.ejs %>
+  <body>
+    <div class="container">
+      <h1>List Links</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Url</th>
+            <th>Short Url</th>
+            <th class="center-align">Click Count</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (let i=0; i<data.length; i++) {  %>
+          <tr>
+            <td><%= `${i+1}` %>.</td>
+            <td style="text-overflow: ellipsis;"><a href="<%= `${data[i].link}` %>" target="_blank"><%= `${data[i].link}` %></a></td>
+            <td><a href="/s/<%= `${data[i].short}` %>" target="_blank"><%= `${data[i].short}` %></a></td>
+            <td class="center-align"><%= `${data[i].click}` %></td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+      <a href="/urls/new"><button type="button" name="button">Make Short Link</button></a>
+    </div>
+  </body>
+</html>

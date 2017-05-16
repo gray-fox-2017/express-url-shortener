@@ -1,0 +1,22 @@
+<%- include ./partials/header.ejs %>
+  <body>
+    <div class="container">
+      <p>Input your link to get short link</p>
+      <form class="/urls/new" action="" method="post">
+        <div class="row">
+          <div class="input-field col s6">
+            <input type="text" id="url" name="url" value="" required class="validate">
+            <label for="url">Your Link</label>
+          </div>
+        </div>
+        <button class="waves-effect waves-light btn" type="submit">Submit</button>
+      </form>
+    </div>
+  </body>
+  <script type="text/javascript">
+    $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+    });
+  </script>
+</html>
