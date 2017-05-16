@@ -20,7 +20,6 @@ module.exports = function(sequelize, DataTypes) {
           .catch((err)=>{
             Url.surl = n_surl;
             flag = true;
-            break;
           });
         }//end while flag
       }//end beforeCreate
