@@ -10,12 +10,9 @@ module.exports = function(sequelize, DataTypes) {
     updatedAt: DataTypes.DATE
   }, {
     hooks: {
-      beforeCreate: () => {
+      beforeCreate: (user,options) => {
         let flag = false;
         Url.count().then((c)=> {
-        })
-        .err(()=>{
-          flag = true;
           let n_surl = '';
           while (flag === false) {
             n_surl = helper.generateShortUrl();
@@ -24,8 +21,14 @@ module.exports = function(sequelize, DataTypes) {
             .catch((err)=>{
               Url.surl = n_surl;
               flag = true;
+              return User.surl = n_surl;
             });
           }//end while flag
+        })
+        .err(()=>{
+          flag = true;
+          n_surl = helper.generateShortUrl();
+          return User.surl = n_surl;
         })//end err
 
       }//end beforeCreate

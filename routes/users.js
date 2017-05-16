@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  db.Url.create({lurl:req.body.lurl, counter:0})
+  db.Url.create({lurl:req.body.lurl, counter:0, surl:''})
   .then(()=>{
     res.redirect('/users/');
   }).catch((err)=>{
