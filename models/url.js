@@ -10,26 +10,17 @@ module.exports = function(sequelize, DataTypes) {
     updatedAt: DataTypes.DATE
   }, {
     hooks: {
-      beforeCreate: (user,options) => {
-        let flag = false;
-        Url.count().then((c)=> {
-          let n_surl = '';
-          while (flag === false) {
-            n_surl = helper.generateShortUrl();
-            Url.findAll({where:{surl:n_surl}})
-            .then(()=>{})
-            .catch((err)=>{
-              Url.surl = n_surl;
-              flag = true;
-              return User.surl = n_surl;
-            });
-          }//end while flag
+      beforeCreate: (url,options) => {
+
+        // User.beforeCreate((user, options) => {
+        //   return hashPassword(user.password).then(hashedPw => {
+        //     user.password = hashedPw;
+        //   });
+        // });
+
+        return generateShortUrl().then((n_surl)=>{
+          url.surl = n_surl;
         })
-        .err(()=>{
-          flag = true;
-          n_surl = helper.generateShortUrl();
-          return User.surl = n_surl;
-        })//end err
 
       }//end beforeCreate
     }//end hook
@@ -37,6 +28,32 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
+      },
+      generateShortUrl: function() {
+        let flag = false;
+        let n_surl;
+
+        Url.count().then((c)=> {
+          if(c === 0) {
+            n_surl = helper.generateShortUrl();
+            return n_surl;
+          }
+          else {
+            while (flag === false) {
+              n_surl = helper.generateShortUrl();
+              Url.findOne({where:{surl:n_surl}})
+              .then(()=>{})
+              .catch((err)=>{
+                flag = true;
+                return n_surl;
+              })
+            }
+          }
+
+        }).catch((err)=>{
+          n_surl = helper.generateShortUrl();
+          return n_surl;
+        })
       }
     }
   });
