@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
     createdAt : DataTypes.DATE,
     updatedAt: DataTypes.DATE
   }, {
-    hook: {
+    hooks: {
       beforeCreate: () => {
         let flag = false;
         let n_surl = '';
