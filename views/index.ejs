@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%=  %>
+    </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href='/stylesheets/materialize.css' />
+    <link rel="stylesheet" href='/stylesheets/materialize.min.css' />
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="row">
+            <div class="col s12 m10">
+                <h1>URL Shortener</h1>
+                <form action="/urls" method="post">
+                    <div class="form-group">
+                        <label for="url">Add URL:</label>
+                        <input type="text" class="form-control" name="url" id="url">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                <br>
+            </div>
+            <div class="col-md-8">
+                <table class="bordered stripped highlight centered">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>URL LINK</th>
+                            <th>SHORTENER LINK</th>
+                            <th>CLICK COUNT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% let i=1; data.forEach((datas)=>{ %>
+                            <tr>
+                                <td>
+                                    <%= i++ %>
+                                </td>
+                                <td>
+                                    <a href="<%= datas.url %>">
+                                        <%= datas.url %>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="/<%= datas.sortener_url %>" onclick="window.open('<%= datas.url %>');">
+                                        <%= datas.sortener_url %>
+                                    </a>
+                                </td>
+                                <td>
+                                    <%= datas.count %>
+                                </td>
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="javascripts/materialize.js"></script>
+    <script src="javascripts/init.js"></script>
+</body>
+
+</html>
