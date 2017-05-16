@@ -1,0 +1,2 @@
+https://stedyurlshort.herokuapp.com/
+https://git.heroku.com/stedyurlshort.git
