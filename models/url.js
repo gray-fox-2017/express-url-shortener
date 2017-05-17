@@ -1,7 +1,12 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var Url = sequelize.define('Url', {
-    norm_url: DataTypes.STRING,
+    norm_url: {
+      type: DataTypes.STRING,
+      // validate: {
+      //   contains: 'http://',
+      // }
+    },
     short_url: DataTypes.STRING,
     click_count: {
       type: DataTypes.INTEGER,
