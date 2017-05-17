@@ -28,8 +28,14 @@ router.get('/:short_url', (req, res, next)=> {
       sortener_url: req.params.short_url
     }
   })
-  .then((data)=> {
-    res.redirect('/')
+  .then((url)=> {
+    let last = url.count;
+    url.updateAttributes({
+      count: last+1
+    })
+    .then(()=> {
+      res.redirect('/')
+    })
   })
 })
 
