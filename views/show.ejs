@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.css">
+</head>
+
+<body>
+  <table style="width:60%" align="center" class="bordered">
+    <thead>
+      <tr>
+        <td>ID</td>
+        <td>LINK</td>
+        <td>SHORT LINK</td>
+        <td>COUNT</td>
+        <td>ACTION</td>
+      </tr>
+
+    </thead>
+    <tbody>
+          <%
+
+            data.forEach((value)=>{
+          %>
+        <tr>
+
+          <td>
+            <%= value.id%>
+          </td>
+          <td>
+            <!-- ini link -->
+            <a href="/urls/long_url/<%=value.id%>"><%= value.link %></a>
+          </td>
+          <td>
+            <!-- <a href="/urls/short_url/<%= value.short_link %>" onclick="window.open('<%= value.link %>');"><%= value.short_link %></a> -->
+            <!-- /urls/short_url/<%= value.id %> -->
+            <a href="/shows" onclick="window.open('/urls/short_url/<%= value.id %>');"><%= value.short_link %></a>
+          </td>
+          <td>
+            <%= value.click_count || 0%>
+          </td>
+          <td><a href="/urls/delete/<%=value.id%>" onclick="confirm('Are you Sure want to delete?')">DELETE</a></td>
+
+        </tr>
+        <%
+          })
+          %>
+          <tr>
+            <td colspan="5"><a class="waves-effect waves-light btn" href="/">BACK</a></td>
+          </tr>
+
+
+    </tbody>
+  </table>
+
+</body>
+
+</html>
