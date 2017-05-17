@@ -24,7 +24,6 @@ router.post('/new', function(req, res){
   let url = req.body.url;
   db.Url.create({
     'link': url,
-    'click': 0
   })
   .then(()=> {
     res.redirect('/urls')

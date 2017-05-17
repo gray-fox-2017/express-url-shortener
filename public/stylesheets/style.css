@@ -1,8 +1,47 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+.home::after, .content::after, .list::after {
+  background-image: url('../images/icon-seamless.png');
+  content: "";
+  opacity: 0.1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+.home h1 {
+  font-size: 56px;
+  font-weight: 600;
+  color: white;
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+.home p {
+  color: white;
+}
+
+.box-input {
+  padding: 30px;
+  max-width: 500px;
+  text-align: center;
+  margin: auto;
+}
+
+.content {
+  max-width: 500px;
+  margin: auto;
+}
+
+.list .card {
+  padding: 20px 50px 50px;
 }
