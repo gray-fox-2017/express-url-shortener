@@ -1,1 +1,1 @@
-https://dashboard.heroku.com/apps/deriapp-shoerten-url
+https://deriapp-shoerten-url.herokuapp.com/
