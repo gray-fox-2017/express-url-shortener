@@ -13,7 +13,9 @@
     "express": "~4.15.2",
     "morgan": "~1.8.1",
     "nodemon": "^1.11.0",
+    "rdbms": "0.0.1",
     "sequelize": "^3.30.4",
+    "sequelize-cli": "^2.7.0",
     "serve-favicon": "~2.4.2"
   }
 }
