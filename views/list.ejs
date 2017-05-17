@@ -1,0 +1,35 @@
+<%- include ./partials/header.ejs %>
+  <body>
+    <div class="container">
+      <div class="list">
+        <div class="card">
+          <h4>LIST LINK</h4>
+          <br>
+          <table class="striped">
+            <thead>
+              <tr>
+                <th class="center-align">No.</th>
+                <th>Url</th>
+                <th>Short Url</th>
+                <th class="center-align">Click Count</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for (let i=0; i<data.length; i++) {  %>
+              <tr>
+                <td class="center-align"><%= `${i+1}` %>.</td>
+                <td style="text-overflow: ellipsis;"><a href="<%= `${data[i].link}` %>" target="_blank"><%= `${data[i].link}` %></a></td>
+                <td><a href="/s/<%= `${data[i].short}` %>" target="_blank">https://miniurls.herokuapp.com/<%= `${data[i].short}` %></a></td>
+                <td class="center-align"><%= `${data[i].click}` %></td>
+              </tr>
+              <% } %>
+            </tbody>
+          </table>
+          <br>
+          <br>
+          <a href="/urls/new"><button type="button" name="button" class="btn waves-effect waves-light red lighten-3">Make Short Link</button></a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
