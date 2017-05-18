@@ -1,11 +1,36 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>URL Shortener By Zulfikar</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <h1>URL Shortener By Zulfikar</h1>
+    <p>Input your URL Here</p>
+    <form class="" action="/urls" method="post">
+    <input type="text" name="input_url" placeholder="Input your URL here">
+    <button type="submit" name="submit_url"> Submit URL</button>
+    </form>
+
+  <table>
+    <thead>
+      <tr>
+        <td> ID </td>
+        <td> Long URL </td>
+        <td> Short URL </td>
+        <td> Counter </td>
+      </tr>
+    </thead>
+    <tbody>
+      <%List.forEach(function(list){ %>
+      <tr>
+      <td> <%= list.id %> </td>
+      <td> <%= list.longUrl %> <a href="#"> </a></td>
+      <td> <a href="/%= list.shortURL %>"> <%= list.shortURL %> </a> </td>
+      <td> <%= list.counter %> </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
   </body>
 </html>
