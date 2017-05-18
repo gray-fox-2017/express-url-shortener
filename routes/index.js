@@ -15,7 +15,8 @@ router.get('/', function(req, res, next) {
 router.post('/urls' ,function(req,res,next) {
   models.Url.create({
     url : req.body.url,
-    shortener_url : req.body.shortener_url
+    shortener_url : req.body.shortener_url,
+    count : 0
   })
   .then(function(user) {
     res.redirect('/')
@@ -23,18 +24,20 @@ router.post('/urls' ,function(req,res,next) {
 })
 
 router.get('/:short_url', function(req,res,next) {
-  model.Url.find({
+  models.Url.find({
     where : {
-      shortener_url : req.params.shortener_url
+      shortener_url : req.params.short_url
     }
   })
   .then ((url) =>{
     let last = url.count;
     url.updateAttributes({
-      count : last+1
+      count : last+=1
     })
-    .then(()=>{
+    .then((url2)=>{
       res.redirect('/')
+      // console.log(url2)
+      // res.send(url2)
     })
   })
 })
