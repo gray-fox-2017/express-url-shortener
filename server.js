@@ -14,9 +14,4 @@ app.use('/',index);
 app.use('/url',url);
 
 
-
-
-
-
-
 app.listen(3000)
