@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <button type="button"><a href="/">Home</a></button>
+    <button type="button"><a href="/urls">Urls List</a></button>
+    <title><%- title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+  </head>
+  <body>
+    <div class="card-panel cyan lighten-5">
+      <h1><%= title %></h1>
+      <p class="card-panel cyan lighten-4"><marquee>Welcome to <%- title %></marquee></p>
+    </div>
+    <br>
+    <div class="card-panel light-blue lighten-4">
+    <table class="bordered">
+      <tr class="light-blue lighten-1">
+        <th>Address</th>
+        <th>Short url</th>
+        <th>Click counter</th>
+      </tr>
+      <tr>
+        <td><%=url.longUrl%></td>
+        <td><a href="/urls/<%=url.shortUrl%>"><%=url.shortUrl%></a></td>
+        <td><%=url.count||0%></td>
+      </tr>
+    </table>
+    </div>
+  </body>
+</html>
