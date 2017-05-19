@@ -1,1 +1,1 @@
-https://dashboard.heroku.com/apps/shorturlantoniangga
+https://shorturlantoniangga.herokuapp.com/
